@@ -8,4 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TvNormal">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="TvTitleBarTitleText">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Tv16dpfff">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Tv13dp999" parent="TvNormal">
+        <item name="android:textColor">#999</item>
+        <item name="android:textSize">13dp</item>
+    </style>
+
+    <style name="Tv16dp333" parent="TvNormal">
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">16dp</item>
+    </style>
 </resources>
