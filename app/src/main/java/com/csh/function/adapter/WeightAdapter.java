@@ -28,21 +28,22 @@ public class WeightAdapter extends BaseQuickAdapter<WeightViewItem, WeightAdapte
     }
 
     @Override
-    protected void convert(WeightHolder helper, WeightViewItem item) {
+    protected void convert(final WeightHolder helper, final WeightViewItem item) {
         helper.item = item;
         helper.getView(R.id.iv_check).setSelected(item.isChecked());
-        helper.setText(R.id.tv_name, item.getBean().getItemName());
-        helper.setText(R.id.tv_unit, item.getBean().getUnitName());
+        helper.setText(R.id.tv_name, item.getItemName());
+        helper.setText(R.id.tv_unit, item.getUnitName());
 
-//        helper.getView(R.id.group_item).setOnClickListener(v -> {
-//            item.setChecked(!item.isChecked());
-//            helper.getView(R.id.iv_check).setSelected(item.isChecked());
-//            //是否全选
-//            isCheckAll();
-//        });
+        helper.getView(R.id.group_item).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                item.setChecked(!item.isChecked());
+                helper.getView(R.id.iv_check).setSelected(item.isChecked());
+            }
+        });
         getWeightEdit(helper).setTag(item);
         getWeightEdit(helper).clearFocus();
-        getWeightEdit(helper).setText(String.valueOf(item.getEditWeight()));
+        getWeightEdit(helper).setText(String.valueOf(item.getLastQty()));
     }
 
     private EditText getWeightEdit(WeightHolder helper) {
