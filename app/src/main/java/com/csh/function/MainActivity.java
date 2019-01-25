@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.chad.library.adapter.base.listener.OnItemDragListener;
 import com.csh.function.bean.FunctionBean;
+import com.csh.function.utils.DisplayUtils;
 
 import java.util.ArrayList;
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvOther;
     private FunctionSetAdapter commonAdapter;
     private FunctionSetAdapter otherAdapter;
+    private LinearLayout llModify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 changState(otherAdapter.getData().get(position));
             }
         });
+        //被修改的布局
+        llModify = (LinearLayout) findViewById(R.id.ll_modify);
     }
 
     private void initData() {
@@ -132,5 +138,21 @@ public class MainActivity extends AppCompatActivity {
         otherAdapter.notifyDataSetChanged();
     }
 
+    private Boolean aBoolean = true;
 
+    /**
+     * 添加动态调整尺寸功能（整个布局采用LinearLayout，动态调整部分布局尺寸被调整之后，另一部分weight为1，也会做出相应调整）
+     * @param view
+     */
+    public void modifySize(View view) {
+        ViewGroup.LayoutParams params = llModify.getLayoutParams();
+        if (aBoolean) {
+            params.height = DisplayUtils.dp2Px(this,200);
+            aBoolean = false;
+        } else {
+            params.height = DisplayUtils.dp2Px(this,100);
+            aBoolean = true;
+        }
+        llModify.setLayoutParams(params);
+    }
 }

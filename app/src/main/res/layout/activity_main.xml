@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
         <TextView
             android:layout_width="match_parent"
@@ -25,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="常用操作"/>
+            android:text="常用操作" />
 
 
         <android.support.v7.widget.RecyclerView
@@ -39,21 +37,41 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="全部操作"/>
+            android:text="全部操作" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_other"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:background="#fff"
             app:layoutManager="android.support.v7.widget.GridLayoutManager"
             app:spanCount="4" />
-        <Button
-            android:id="@+id/btn_weight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="称重"/>
+
+        <LinearLayout
+            android:id="@+id/ll_modify"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <Button
+                android:id="@+id/btn_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="称重" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="调整尺寸"
+                android:onClick="modifySize"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
